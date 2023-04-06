@@ -33,13 +33,14 @@ public class GameManager : MonoBehaviour
     public IEnumerator StartBuildPhase()
     {
         buildingPhase = true;
+        currentWave++;
+        AddScrap(5 * currentWave);
 
         HUD.instance.PlayPhaseTextAnimation(buildingPhase);
 
         yield return new WaitForSeconds(buildingPhaseTimer);
 
         buildingPhase = false;
-        currentWave++;
         HUD.instance.PlayPhaseTextAnimation(buildingPhase);
 
         yield return new WaitForSeconds(2f);
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnWave(int numberOfSpeed, int numberOfBasic, int numberOfTanks)
     {
+        enemiesInWave.Clear();
 
         for (int i = 0; i < numberOfSpeed; i++)
         {
@@ -81,9 +83,16 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnEnemies());
     }
 
-    public void AddScrap()
+    public void AddScrap(int amount = 0)
     {
-        totalScrap++;
+        if (amount <= 0)
+        {
+            totalScrap++;
+        }
+        else
+        {
+            totalScrap += amount;
+        }
     }
 
     public void RemoveScrap(int amount)
