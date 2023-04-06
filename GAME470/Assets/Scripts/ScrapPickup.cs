@@ -5,6 +5,16 @@ using UnityEngine;
 public class ScrapPickup : MonoBehaviour, ICollectable
 {
 
+    private void Update()
+    {
+        Rotate();
+    }
+
+    private void Rotate()
+    {
+        transform.Rotate(Time.deltaTime * Vector3.up * 100, Space.World);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("collided");
