@@ -38,6 +38,7 @@ public class TurretSelect : MonoBehaviour
             if (selectedTurret == null)
             {
                 selectedTurret = turrets[0];
+                HUD.instance.ChangeSelectIcon(0);
             }
             else if (selectedTurret == turrets[0])
             {
@@ -46,10 +47,12 @@ public class TurretSelect : MonoBehaviour
             else if (selectedTurret == turrets[i])
             {
                 selectedTurret = turrets[i - 1];
+                HUD.instance.ChangeSelectIcon(i - 1);
                 Debug.Log(selectedTurret);
                 return;
             }
         }
+        
     }
 
     void SwitchTurretRight()
@@ -59,6 +62,7 @@ public class TurretSelect : MonoBehaviour
             if (selectedTurret == null)
             {
                 selectedTurret = turrets[turrets.Length - 1];
+                HUD.instance.ChangeSelectIcon(2);
             }
             else if (selectedTurret == turrets[turrets.Length - 1])
             {
@@ -67,6 +71,7 @@ public class TurretSelect : MonoBehaviour
             else if (selectedTurret == turrets[i])
             {
                 selectedTurret = turrets[i + 1];
+                HUD.instance.ChangeSelectIcon(i + 1);
                 Debug.Log(selectedTurret);
                 return;
             }

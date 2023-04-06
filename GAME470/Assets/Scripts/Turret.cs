@@ -13,6 +13,7 @@ public class Turret : MonoBehaviour
     [SerializeField] bool isShooting;
     TextMesh turretText;
 
+    [SerializeField] bool canRotate = true;
 
     void Start()
     {
@@ -24,7 +25,10 @@ public class Turret : MonoBehaviour
     {
         if (currentTarget != null)
         {
-            transform.rotation = Quaternion.LookRotation(currentTarget.transform.position - transform.position, Vector3.up);
+            if (canRotate)
+            {
+                transform.rotation = Quaternion.LookRotation(currentTarget.transform.position - transform.position, Vector3.up);
+            }
 
             if (!isShooting)
             {
@@ -76,7 +80,52 @@ public class Turret : MonoBehaviour
 
         if (currentTarget != null)
         {
-            currentTarget.TakeDamage(turret.damage);
+            if (!turret.canHitMultipleTargets)
+            {
+                currentTarget.TakeDamage(turret.damage);
+
+                if (turret.slowsEnemies)
+                {
+                    currentTarget.SlowEnemy();
+                }
+            }
+            else
+            {
+                foreach (Enemy enemy in enemiesInRange)
+                {
+                    if (enemy != null)
+                    {
+                        enemy.TakeDamage(turret.damage);
+
+                        if (turret.slowsEnemies)
+                        {
+                            enemy.SlowEnemy();
+                        }
+                    }
+                }
+
+                /*for (int i = 0; i < 3; i++)
+                {
+                    if (enemiesInRange.Count > 2)
+                    {
+                        enemiesInRange[i].TakeDamage(turret.damage);
+
+                        if (turret.slowsEnemies)
+                        {
+                            enemiesInRange[i].SlowEnemy();
+                        }
+                    }
+                    else
+                    {
+                        currentTarget.TakeDamage(turret.damage);
+
+                        if (turret.slowsEnemies)
+                        {
+                            currentTarget.SlowEnemy();
+                        }
+                    }
+                }*/
+            }
         }
 
         isShooting = false;

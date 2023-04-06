@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] GameObject enemy;
+    public static Spawner instance;
+
+    //[SerializeField] GameObject enemy;
     [SerializeField] float timeBetweenSpawns;
     bool isSpawning;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Update()
     {
         if (!isSpawning)
         {
-            StartCoroutine(SpawnEnemy());
+            //StartCoroutine(SpawnEnemy());
         }
     }
 
-    IEnumerator SpawnEnemy()
+    public void SpawnEnemy(Enemy enemy)
     {
-        isSpawning = true;
-        yield return new WaitForSeconds(timeBetweenSpawns);
-        Instantiate(enemy, transform.position, Quaternion.identity);
-        isSpawning = false;
+        Instantiate(enemy.gameObject, transform.position, Quaternion.identity);
     }
 }

@@ -10,4 +10,7 @@ public class TurretType : ScriptableObject
     public int damage;
     public int scrapCost;
     public GameObject prefab;
+
+    public bool slowsEnemies;
+    public bool canHitMultipleTargets;
 }

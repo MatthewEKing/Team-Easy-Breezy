@@ -1,0 +1,34 @@
+{
+    "name": "HudInputs",
+    "maps": [
+        {
+            "name": "HUD",
+            "id": "da9b5a93-b1f7-4758-9d2b-d731454ae703",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "800f89b0-3e9a-42a2-88c8-ddc390333e76",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5d9bc93c-44fd-43a3-95a3-fc4fb9c990ee",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

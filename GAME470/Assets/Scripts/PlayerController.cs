@@ -5,8 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     [Header("Player Variables")]
     [SerializeField] float speed;
+    [SerializeField] float walkSpeed;
+    public bool canMove = true;
 
     [Header("Building")]
     public Transform buildPoint;
@@ -22,8 +26,16 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] PlayerState state = PlayerState.Walking;
 
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!canMove) { return; }
+
         moveVector = context.ReadValue<Vector2>();
     }
 
@@ -42,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     public void BuildTurret(InputAction.CallbackContext context)
     {
-        if (context.started && state != PlayerState.Building)
+        if (context.started && state != PlayerState.Building && canMove)
         {
             if (CheckIfBuildable() && TurretSelect.instance.selectedTurret != null && GameManager.instance.totalScrap >= TurretSelect.instance.selectedTurret.scrapCost)
             {
@@ -62,7 +74,7 @@ public class PlayerController : MonoBehaviour
         switch (state)
         {
             case PlayerState.Walking:
-                speed = 5f;
+                speed = walkSpeed;
                 break;
 
             case PlayerState.Building:

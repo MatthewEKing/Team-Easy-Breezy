@@ -44,4 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b189eb35d22994e4eaae4c3db31feae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingPhase: 0
+  buildingPhaseTimer: 30
+  currentWave: 0
+  timeBetweenSpawns: 2
+  enemiesInWave: []
+  basicEnemyPrefab: {fileID: 6939513117906880442, guid: 6babb444d65203f40952418bd449b8ea, type: 3}
+  tankEnemyPrefab: {fileID: 6939513117906880442, guid: c288ef7972701ec46bad55bc05a15c8d, type: 3}
+  speedEnemyPrefab: {fileID: 6939513117906880442, guid: 75d242702544ac246ba2dd92b976e5a9, type: 3}
   totalScrap: 0

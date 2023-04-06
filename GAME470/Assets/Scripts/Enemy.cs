@@ -7,8 +7,8 @@ public class Enemy : MonoBehaviour
 {
     [Header("Enemy Variables")]
     [SerializeField] int health;
-    [SerializeField] int speed;
-
+    [SerializeField] float speed;
+    [SerializeField] float slowedSpeed;
 
 
     NavMeshAgent agent;
@@ -19,10 +19,17 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
         agent.SetDestination(FindObjectOfType<Base>().gameObject.transform.position);
+
+        slowedSpeed = speed / 2;
     }
 
 
     void Update()
+    {
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
     {
         
     }
@@ -35,6 +42,11 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void SlowEnemy()
+    {
+        speed = slowedSpeed;
     }
 
     public void Die()

@@ -424,7 +424,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8180a50c4841cf94abb2484c1e518970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 15
+  walkSpeed: 10
+  canMove: 1
   buildPoint: {fileID: 2115830341}
   groundLayers:
     serializedVersion: 2
@@ -444,4 +446,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turrets:
   - {fileID: 11400000, guid: bf931efa20b51904080fe1114de2c0da, type: 2}
+  - {fileID: 11400000, guid: 55b1f594b6636904a9507ec21b69ba82, type: 2}
+  - {fileID: 11400000, guid: 50ed4235432b1b44aa6c0638a570e9c0, type: 2}
   selectedTurret: {fileID: 0}

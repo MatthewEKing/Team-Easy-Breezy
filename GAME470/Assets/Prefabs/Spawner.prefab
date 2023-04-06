@@ -110,5 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31c54317143aa964692643f4491a80a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 6939513117906880444, guid: 6babb444d65203f40952418bd449b8ea, type: 3}
-  timeBetweenSpawns: 5
+  timeBetweenSpawns: 3
