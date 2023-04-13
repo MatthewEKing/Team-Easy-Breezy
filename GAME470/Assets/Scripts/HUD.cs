@@ -69,7 +69,7 @@ public class HUD : MonoBehaviour
             {
                 pauseOverlay.SetActive(false);
                 Time.timeScale = 1f;
-                PlayerController.instance.canMove = false;
+                PlayerController.instance.canMove = true;
             }
             else
             {
