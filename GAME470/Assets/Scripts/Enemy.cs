@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        GameManager.instance.AddScrap(2);
         Destroy(this.gameObject);
     }
 }
